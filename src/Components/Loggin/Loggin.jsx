@@ -6,10 +6,10 @@ const Loggin = () => {
 
     const handelSubmit = (e) =>{
         e.preventDefault()
-        console.log("successfully submitted")
+        // console.log("successfully submitted")
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        // console.log(email, password);
     }
     
 
