@@ -4,8 +4,13 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Loggin = () => {
 
-  const {signInUser} = useContext(AuthContext)
+  const {signInUser, signInWithGoogle} = useContext(AuthContext)
   const navigate = useNavigate()
+
+  const handelLogginWithGoogle = () => {
+    signInWithGoogle(navigate('/'))
+    
+  }
 
 
     const handelSubmit = (e) =>{
@@ -70,6 +75,9 @@ const Loggin = () => {
           <div className="text-center mb-5">
             <p>New to this website Ple   ase</p>
             <span className="font-bold"><Link to={'/register'}>Register</Link></span>
+            <p>
+              <button onClick={handelLogginWithGoogle} className="btn btn-ghost text-center">Google</button>
+            </p>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@ import Register from "./Components/Register/Register.jsx";
 import AuthProvider from "./Components/AuthProvider/AuthProvider.jsx";
 import Order from "./Components/Order/Order.jsx";
 import PrivateRoute from "./Routes/PrivateRoute.jsx";
+import Profail from "./Components/Profail/Profail.jsx";
 // import AuthProvider from './Components/AuthProvider/AuthProvider.jsx';
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path:'orders',
         element:<PrivateRoute><Order></Order></PrivateRoute>
+      },
+      {
+        path:'profail',
+        element:<PrivateRoute><Profail></Profail></PrivateRoute>
       }
     ],
   },

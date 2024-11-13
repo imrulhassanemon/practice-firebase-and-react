@@ -27,9 +27,14 @@ const Navbar = () => {
         <NavLink to={"/register"}>Register</NavLink>
       </li>
       {
-        user && <li>
-        <NavLink to={"/Orders"}>Orders</NavLink>
+        user && <>
+        <li>
+        <NavLink to={"/orders"}>Orders</NavLink>
       </li>
+        <li>
+        <NavLink to={"/profail"}>Profail</NavLink>
+      </li>
+      </>
       }
     </>
   );
@@ -69,7 +74,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? <>
         <span>{user.email}</span>
-        <a onClick={handelLogOutBtn} className="btn font-bold"> signOut</a>
+        <a onClick={() => handelLogOutBtn()} className="btn font-bold"> signOut</a>
         </> : <Link to={"/login"} className="font-bold">Login</Link>}
       </div>
     </div>

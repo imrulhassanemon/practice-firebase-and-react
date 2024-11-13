@@ -20,7 +20,8 @@ const Register = () => {
         createUser(email, password)
         .then((result)=>{
           console.log(result.user);
-          e.target.reset(navigate('/')) 
+          e.target.reset() 
+          navigate('/')
         })
         .catch(error => {
           console.log("Hello boss I am Error", error.message);
