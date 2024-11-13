@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Loggin = () => {
+
+  const {signInUser} = useContext(AuthContext)
 
 
     const handelSubmit = (e) =>{
@@ -10,6 +13,13 @@ const Loggin = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         // console.log(email, password);
+        signInUser(email, password)
+        .then((result) => {
+          console.log(result.user)
+        })
+        .catch(error => {
+          console.log('I am error vai', error.message)
+        })
     }
     
 

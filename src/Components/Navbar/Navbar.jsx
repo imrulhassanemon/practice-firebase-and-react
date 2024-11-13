@@ -1,25 +1,31 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
-
 const Navbar = () => {
-
-  const {name} = useContext(AuthContext)
-  console.log(name);
+  const { user, signOutUser } = useContext(AuthContext);
+  console.log(user);
+  const handelLogOutBtn = () => {
+    signOutUser()
+    .then(()=> {
+      console.log("user signout successfully");
+    })
+    .catch(error => {
+      console.log("Boss I am from Error", error.message);
+    })
+  }
 
   const link = (
     <>
       <li>
-        <NavLink to={'/'}>Home</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={'/login'}>Login</NavLink>
+        <NavLink to={"/login"}>Login</NavLink>
       </li>
       <li>
-        <NavLink to={'/register'}>Register</NavLink>
+        <NavLink to={"/register"}>Register</NavLink>
       </li>
-    
     </>
   );
 
@@ -53,12 +59,13 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {link}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{link}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">{name}</a>
+        {user ? <>
+        <span>{user.email}</span>
+        <a onClick={handelLogOutBtn} className="btn font-bold"> signOut</a>
+        </> : <Link to={"/login"} className="font-bold">Login</Link>}
       </div>
     </div>
   );
